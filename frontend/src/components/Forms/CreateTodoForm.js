@@ -12,7 +12,6 @@ const CreateTodoForm = ({ addTodo, bucketid }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("hii", title)
         addTodo(title, bucketid)
         setTitle("")
     }

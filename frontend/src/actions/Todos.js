@@ -113,3 +113,40 @@ export const updateTodo = (title, todoId, history) => async dispatch => {
         console.log(err);
     }
 }
+
+
+export const changeStatus = (status, todoId) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    const body = {
+        completed: status
+    }
+
+    try {
+        const res = await axios.patch(`/api/todo/status/${todoId}`, body, config);
+
+        dispatch({
+            type: actions.UPDATE_TODO,
+            payload: { todoId, todos: res.data }
+        });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export const deleteTodo = id => async dispatch => {
+    try {
+        await axios.delete(`/api/todo/${id}`);
+
+        dispatch({
+            type: actions.DELETE_TODO,
+            payload: id
+        });
+    } catch (err) {
+        console.log(err)
+    }
+}

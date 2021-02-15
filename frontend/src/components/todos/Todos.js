@@ -9,13 +9,11 @@ import CreateTodoForm from '../Forms/CreateTodoForm';
 
 
 const Todos = ({ getTodos, todos, match }) => {
-    console.log("render")
-    console.log(todos)
 
     React.useEffect(() => {
-        console.log(match.params.id)
         getTodos(match.params.id);
     }, [getTodos, match.params.id]);
+
     return (
         <div className="page">
             <CreateTodoForm bucketid={match.params.id} />

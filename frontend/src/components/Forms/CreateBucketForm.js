@@ -11,7 +11,6 @@ const CreateBucketForm = ({ addBucket }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("hii", title)
         addBucket(title)
         setTitle("")
     }

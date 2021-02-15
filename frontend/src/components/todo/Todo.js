@@ -11,6 +11,10 @@ const Todo = ({ getTodo, todo, match }) => {
     React.useEffect(() => {
         getTodo(match.params.id);
     }, [getTodo, match.params.id]);
+
+    if (!todo) {
+        return <p>There are no todos here</p>
+    }
     return (
         <div className="page">
             <UpdateTodoForm todo={todo} history={match.history} />

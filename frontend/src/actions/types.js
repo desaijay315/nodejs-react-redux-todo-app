@@ -6,6 +6,7 @@ export const GET_TODOS = 'GET_TODOS';
 export const UPDATE_TODO = 'UPDATE_TODO';
 export const ADD_TASK = 'ADD_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
+export const DELETE_TODO = 'DELETE_TODO';
 export const EDIT_TASK = 'EDIT_TASK';
 export const COMPLETE_TASK = 'COMPLETE_TASK';
 export const CANCEL_TASK = 'CANCEL_TASK';

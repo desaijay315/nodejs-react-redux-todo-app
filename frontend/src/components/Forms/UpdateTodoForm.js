@@ -7,12 +7,10 @@ import { updateTodo } from '../../actions/Todos';
 
 
 const UpdateTodoForm = ({ updateTodo, todo, history }) => {
-    console.log(todo)
     const [title, setTitle] = React.useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("hii", title)
         updateTodo(title, todo._id, history)
         setTitle("")
     }

@@ -19,7 +19,20 @@ const TodosReducer = (state, action) => {
             return { ...state, todo: payload, loading: false }
         }
         case actionTypes.UPDATE_TODO: {
-            return { ...state, todo: payload, loading: false }
+            return {
+                ...state,
+                todos: state.todos.map(todo =>
+                    todo._id === payload.todoId ? { ...todo, todos: payload.todos } : todo
+                ),
+                loading: false
+            }
+        }
+        case actionTypes.DELETE_TODO: {
+            return {
+                ...state,
+                todos: state.todos.filter(todo => todo._id !== payload),
+                loading: false
+            };
         }
         case actionTypes.ADD_TASK: {
             const todoItem = {
