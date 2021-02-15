@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json())
 
-app.use(BucketRoutes)
+app.use("/api", BucketRoutes)
 app.use(TodoRoutes)
 
 
