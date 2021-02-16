@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Link to="/">
         <div className="logo">
-          <img src="/logo.png" alt="Logo" />
+          <img src="/logo.jpg" alt="Logo" />
         </div>
       </Link>
       <Route path="/" component={Bucket} exact />
