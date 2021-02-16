@@ -6,20 +6,7 @@ import { connect } from 'react-redux';
 import { changeStatus, deleteTodo } from '../../actions/Todos'
 
 const TodoListItem = ({ changeStatus, deleteTodo, todo }) => {
-    console.log(todo)
     const [checked, setChecked] = React.useState(todo.completed);
-    console.log(checked)
-    console.log("todo.completed", todo.completed)
-    const handleChangeStatus = (e) => {
-        const newStatus =
-            todo.completed === false
-                ? true
-                : false;
-        setChecked(!checked)
-        console.log("checked", checked)
-        console.log("newStatus", newStatus)
-        changeStatus(newStatus, todo._id);
-    };
 
     const handleDeleteClick = (id) => {
         deleteTodo(id);
@@ -28,10 +15,14 @@ const TodoListItem = ({ changeStatus, deleteTodo, todo }) => {
         <li className="task-list-item" key={todo._id}>
             <label className="checkbox">
                 <input
-                    onChange={handleChangeStatus}
+                    onChange={(e) => {
+                        setChecked(e.target.checked)
+                        changeStatus(e.target.checked, todo._id);
+                    }}
                     checked={checked}
                     type="checkbox"
                 />
+
                 <span className="checkbox-mark">&#10003;</span>
             </label>
             <Link to={`/todo/${todo._id}`}>

@@ -4,6 +4,7 @@ const connectDB = require('./db/mongoose')
 connectDB()
 const BucketRoutes = require('./routes/bucket')
 const TodoRoutes = require('./routes/todo')
+const path = require('path')
 
 
 const app = express();
@@ -14,10 +15,17 @@ app.use(express.json())
 app.use("/api", BucketRoutes)
 app.use(TodoRoutes)
 
+console.log(__dirname)
 
-app.get('/', function (req, res) {
-    res.send('hello world!');
-});
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../../frontend/build')))
+    app.get('*', (req, res) =>
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')))
+} else {
+    app.use(express.static(path.join(__dirname, '../../frontend/build')))
+    app.get('*', (req, res) =>
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')))
+}
 
 
 app.listen(port, () => {

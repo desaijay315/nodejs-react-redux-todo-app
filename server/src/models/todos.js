@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const TodoSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -19,6 +20,7 @@ const TodoSchema = new mongoose.Schema({
         default: false
     }
 });
+
 
 const Todo = mongoose.model('Todo', TodoSchema);
 

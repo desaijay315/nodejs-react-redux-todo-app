@@ -142,5 +142,50 @@ router.delete('/todo/:id', async (req, res) => {
     }
 })
 
+router.post('/bucket/filter/:id/todos', async (req, res) => {
+    const _id = req.params.id;
+    const filter = req.body.filter
+    let data, filterData;
+    if (!ObjectID.isValid(_id)) {
+        return res.status(404).send();
+    }
+    try {
+        const bucket = await Bucket.findOne({ _id: req.params.id })
+        if (filter === "all") {
+            data = await bucket.populate('todos').execPopulate()
+            filterData = data.todos
+        } else if (filter === "active") {
+            data = await bucket.populate('todos').execPopulate()
+            filterData = data.todos
+            filterData = filterData.filter(todo => { return todo.completed === false })
+        } else if (filter === "completed") {
+            data = await bucket.populate('todos').execPopulate()
+            filterData = data.todos
+            filterData = filterData.filter(todo => { return todo.completed === true })
+        }
+        res.send(filterData)
+    } catch (error) {
+        res.status(500).send()
+    }
+})
+
+router.delete('/bucket/:id', async (req, res) => {
+    const _id = req.params.id
+    if (!ObjectID.isValid(_id)) {
+        return res.status(404).send();
+    }
+    try {
+        const deletepost = await Bucket.findOneAndDelete({ _id: _id })
+        if (!deletepost) {
+            return res.status(404).send();
+        }
+        res.send(deletepost)
+    } catch (error) {
+        console.log(error)
+        res.status(500).send()
+    }
+})
+
+
 
 module.exports = router

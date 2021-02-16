@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { getTodos } from '../../actions/Todos';
 import TodoListItem from '../todo/TodoListItem';
 import CreateTodoForm from '../Forms/CreateTodoForm';
+import TodoFilter from '../todo/TodoFilter';
 
 
 const Todos = ({ getTodos, todos, match }) => {
@@ -22,6 +23,7 @@ const Todos = ({ getTodos, todos, match }) => {
                     return <TodoListItem key={todo._id} todo={todo} />
                 })}
             </ul>
+            <TodoFilter bucketid={match.params.id} />
         </div>
     )
 }

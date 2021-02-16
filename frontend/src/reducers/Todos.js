@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/types';
 
 const TodosReducer = (state, action) => {
     const { payload } = action;
+    console.log(payload)
     switch (action.type) {
         case actionTypes.ADD_BUCKET: {
             return { ...state, buckets: [...state.buckets, payload] }
@@ -27,12 +28,28 @@ const TodosReducer = (state, action) => {
                 loading: false
             }
         }
+        case actionTypes.FILTERED_TODO: {
+            return {
+                ...state,
+                todos: payload,
+                loading: false
+            }
+        }
         case actionTypes.DELETE_TODO: {
             return {
                 ...state,
                 todos: state.todos.filter(todo => todo._id !== payload),
                 loading: false
             };
+        }
+        case actionTypes.DELETE_BUCKET: {
+            return {
+                ...state,
+                buckets: state.buckets.filter(bucket => bucket._id !== payload),
+                todos: state.todos.filter(todo => todo.bucketId !== payload),
+                todo: {},
+                loading: false
+            }
         }
         case actionTypes.ADD_TASK: {
             const todoItem = {

@@ -150,3 +150,40 @@ export const deleteTodo = id => async dispatch => {
         console.log(err)
     }
 }
+
+export const filteredTodo = (filter, bucketID) => async dispatch => {
+    console.log("filter", filter)
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    const body = {
+        filter: filter
+    }
+
+    try {
+        const res = await axios.post(`/api/bucket/filter/${bucketID}/todos`, body, config);
+
+        dispatch({
+            type: actions.FILTERED_TODO,
+            payload: res.data
+        });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export const deleteBucket = id => async dispatch => {
+    try {
+        await axios.delete(`/api/bucket/${id}`);
+
+        dispatch({
+            type: actions.DELETE_BUCKET,
+            payload: id
+        });
+    } catch (err) {
+        console.log(err)
+    }
+}

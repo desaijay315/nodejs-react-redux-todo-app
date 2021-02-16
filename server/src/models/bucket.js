@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Todos = require('./todos')
 
 const BucketSchema = new mongoose.Schema({
     title: {
@@ -19,6 +20,11 @@ BucketSchema.virtual('todos', {
     foreignField: 'bucketId'
 })
 
-const Post = mongoose.model('Bucket', BucketSchema);
+BucketSchema.post('findOneAndDelete', async function () {
+    const bucket = this
+    await Todos.deleteMany({ bucketId: bucket._id }).exec()
+})
 
-module.exports = Post
+const Bucket = mongoose.model('Bucket', BucketSchema);
+
+module.exports = Bucket
