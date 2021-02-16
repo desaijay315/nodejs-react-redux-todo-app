@@ -2,7 +2,6 @@ import * as actions from './types';
 import axios from 'axios';
 
 export const addBucket = bucketItem => async dispatch => {
-    console.log("bucketItem", bucketItem)
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -52,7 +51,7 @@ export const getTodos = (bucketID) => async dispatch => {
 };
 
 export const addTodo = (todoItem, bucketID) => async dispatch => {
-    console.log("todoItem", todoItem)
+
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -89,7 +88,7 @@ export const getTodo = (todoID) => async dispatch => {
 };
 
 export const updateTodo = (title, todoId, history) => async dispatch => {
-    console.log("title", title)
+
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -152,7 +151,7 @@ export const deleteTodo = id => async dispatch => {
 }
 
 export const filteredTodo = (filter, bucketID) => async dispatch => {
-    console.log("filter", filter)
+
     const config = {
         headers: {
             'Content-Type': 'application/json'

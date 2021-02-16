@@ -7,7 +7,6 @@ import { addTodo } from '../../actions/Todos';
 
 
 const CreateTodoForm = ({ addTodo, bucketid }) => {
-    console.log(bucketid)
     const [title, setTitle] = React.useState('')
 
     const handleSubmit = (e) => {

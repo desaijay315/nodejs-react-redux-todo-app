@@ -7,7 +7,6 @@ import { getTodo } from '../../actions/Todos'
 import UpdateTodoForm from '../Forms/UpdateTodoForm';
 
 const Todo = ({ getTodo, todo, match }) => {
-    console.log(todo, "todo")
     React.useEffect(() => {
         getTodo(match.params.id);
     }, [getTodo, match.params.id]);

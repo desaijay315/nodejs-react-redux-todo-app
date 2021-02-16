@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { filteredTodo } from '../../actions/Todos'
 
 const TodoFilter = ({ filteredTodo, bucketid }) => {
-    console.log(bucketid)
     const handleClick = (e, filter) => {
         filteredTodo(filter, bucketid)
     }

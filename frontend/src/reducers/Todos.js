@@ -2,7 +2,6 @@ import * as actionTypes from '../actions/types';
 
 const TodosReducer = (state, action) => {
     const { payload } = action;
-    console.log(payload)
     switch (action.type) {
         case actionTypes.ADD_BUCKET: {
             return { ...state, buckets: [...state.buckets, payload] }

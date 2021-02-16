@@ -8,7 +8,7 @@ import { deleteBucket } from '../../actions/Todos'
 const BucketListItem = ({ deleteBucket, bucket }) => {
 
     const handleDeleteClick = (e, bucketid) => {
-        console.log(bucketid);
+
         alert("Are you sure you want to delete the bucket? Deleting the Bucket will also delete Todos");
         deleteBucket(bucketid)
     }

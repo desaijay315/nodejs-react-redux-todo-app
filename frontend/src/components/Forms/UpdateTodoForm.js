@@ -7,11 +7,11 @@ import { updateTodo } from '../../actions/Todos';
 
 
 const UpdateTodoForm = ({ updateTodo, todo, history }) => {
-    const [title, setTitle] = React.useState('')
+    const [title, setTitle] = React.useState(todo.title)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!title) {
+        if (!title && !todo.title) {
             alert("Please enter the text")
             return;
         }
