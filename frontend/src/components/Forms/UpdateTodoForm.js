@@ -11,6 +11,10 @@ const UpdateTodoForm = ({ updateTodo, todo, history }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!title) {
+            alert("Please enter the text")
+            return;
+        }
         updateTodo(title, todo._id, history)
         setTitle("")
     }

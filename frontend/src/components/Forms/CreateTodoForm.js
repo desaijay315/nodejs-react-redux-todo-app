@@ -12,6 +12,10 @@ const CreateTodoForm = ({ addTodo, bucketid }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!title) {
+            alert("Please enter the text")
+            return;
+        }
         addTodo(title, bucketid)
         setTitle("")
     }

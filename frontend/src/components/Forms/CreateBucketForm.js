@@ -11,6 +11,10 @@ const CreateBucketForm = ({ addBucket }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!title) {
+            alert("Please enter the text")
+            return;
+        }
         addBucket(title)
         setTitle("")
     }
