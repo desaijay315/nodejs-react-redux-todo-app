@@ -7,6 +7,12 @@ npm install
 cd frontend
 npm install
 ```
+### mongoose.js file configuration
+
+```
+Please enter your dummy mongodb instance URL
+
+```
 
 ### RUN
 
